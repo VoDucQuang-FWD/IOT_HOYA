@@ -1,0 +1,2210 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hoya.View" 
+    xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:dxga="http://schemas.devexpress.com/winfx/2008/xaml/gauges" 
+    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    x:Class="Hoya.View.DBHOYAView"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    Name="DBHOYA"
+        DataContext="{StaticResource DBHoya1}"
+        Title="DBHOYAView" Height="1080" Width="1920">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded"  >
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Viewbox>
+        <Grid Height="1080" Width="1920">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+           
+            <Grid Grid.Row="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0,2,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="92"/>
+                        <ColumnDefinition Width="3"/>
+                        <ColumnDefinition Width="220"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Margin="0,0,51,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="230"/>
+                            <ColumnDefinition Width="470"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0"   >
+                            <WrapPanel HorizontalAlignment="Center"  VerticalAlignment="Center">
+
+                                <Button Margin="0,0,5,0" ForceCursor="True" Command="{Binding Back}" CommandParameter="{Binding ElementName=DBHOYA}" Cursor="Hand" 
+                                 Width="110" Height="40"  Padding="0" Background="#FF208791">
+
+                                    <materialDesign:PackIcon 
+                            Kind="ArrowLeftBold"
+                            
+                            Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" Height="32"
+                            >
+
+                                    </materialDesign:PackIcon>
+
+                                </Button>
+                                <Button Margin="5,0,0,0" ForceCursor="True" Cursor="Hand" 
+                                 Width="110" Height="40"  Padding="0" Background="#FF208791">
+
+                                    <materialDesign:PackIcon  
+                            Kind="ArrowRightBold"
+                            Height="32"
+                            Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch"
+                            >
+
+                                    </materialDesign:PackIcon>
+
+                                </Button>
+
+                            </WrapPanel>
+                        </Grid>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5,8,0,8" Text="TODAY: " FontSize="20" VerticalAlignment="Center" FontWeight="Bold" TextDecorations="Underline" Height="27" Width="76" ></TextBlock>
+                        <TextBlock Margin="0,0,100,0" TextDecorations="Underline" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding timetoday}" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                       
+                        <Image Margin="290,0,126,0" Grid.Column="1" gif:ImageBehavior.AnimatedSource="{Binding gif}"  Cursor="Hand" Height="43" VerticalAlignment="Top"/>
+                        <TextBlock Margin="349,8,41,9" FontSize="20" VerticalAlignment="Center" Text="ONLINE" Grid.Column="1"></TextBlock>
+                        <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2"  Width="280"  Height="26">
+                            <TextBlock Text="DASHBOARD" Margin="0,0" FontSize="20" FontWeight="Bold"></TextBlock>
+                            <materialDesign:PackIcon 
+                            Kind="Forward"
+                            Height="28"
+                            Width="25" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch"
+                            >
+
+                            </materialDesign:PackIcon>
+                            <TextBlock FontSize="20" Text="Home"></TextBlock>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid HorizontalAlignment="Right" Width="160" Grid.ColumnSpan="2">
+                        <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand">
+                            <materialDesign:PackIcon  
+                            Kind="DatabaseArrowUp"
+                            
+                            Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" Height="33"
+                            >
+
+                            </materialDesign:PackIcon>
+                            <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Fetch Data" />
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Column="2" Margin="10,0,0,0">
+                        <WrapPanel VerticalAlignment="Center" Cursor="Hand">
+                            <materialDesign:PackIcon  
+                            Kind="NotificationsOff"
+                            
+                            Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" Height="33"
+                            >
+
+                            </materialDesign:PackIcon>
+
+                            <Label FontSize="20" VerticalAlignment="Center" Content="Notifications"></Label>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <WrapPanel VerticalAlignment="Center" Cursor="Hand">
+                            <materialDesign:PackIcon  
+                            Kind="Feedback"
+                           
+                            Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" Height="33"
+                            >
+
+                            </materialDesign:PackIcon>
+
+                            <Label FontSize="20" Content="FeedBack"></Label>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <WrapPanel VerticalAlignment="Center" Cursor="Hand">
+                            <materialDesign:PackIcon  
+                            Kind="HelpBox"
+                            Height="33"
+                            Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch"
+                            >
+
+                            </materialDesign:PackIcon>
+                            <Label FontSize="20" Content="Help"></Label>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Column="5" Background="Gray" Margin="0,5"/>
+                    <Grid Grid.Column="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Image Source="{Binding imageadmin}" ></Image>
+
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <WrapPanel VerticalAlignment="Center">
+                                <TextBlock Text="P.Nguyen Phu Vinh" FontSize="13" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="President FWD"></TextBlock>
+                            </WrapPanel>
+                        </Grid>
+                        <Grid Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Expander Opacity="11" Width="25">
+
+                            </Expander>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,0,0,0">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="Gray" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                </Grid>
+            </Grid>
+            <ScrollViewer Grid.Row="1" >
+                <DockPanel>
+                    <Expander DockPanel.Dock="Left"  
+                    ExpandDirection="Left" >
+                        <Expander.Header>
+
+                            <materialDesign:PackIcon Margin="0,450,0,0" 
+                            Kind="ChevronDoubleRight"
+                            Height="50"
+                            Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch"
+                            >
+
+                            </materialDesign:PackIcon>
+
+                        </Expander.Header>
+                        <Border Background="#FFE5E5E5" CornerRadius="10" Margin="0,0,0,4">
+                            <Grid Width="230">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="56"></RowDefinition>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="343"></RowDefinition>
+                                    <RowDefinition Height="0.4*"/>
+                                    <RowDefinition  Height="0.4*" />
+                                    <RowDefinition  Height="0.4*" />
+                                    <RowDefinition  Height="0.6*" />
+                                    <RowDefinition  Height="0.4*" />
+                                </Grid.RowDefinitions>
+                                <Border CornerRadius="5" Height="41" Width="100" Background="#FF348EF6" Grid.Row="0" >
+                                    <TextBlock Text="CONTROL"   HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" VerticalAlignment="Bottom" Text="Select Date" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" ></TextBlock>
+                                <Grid Background="#FFB8B8B8" Grid.Row="2"  >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="0.15*"/>
+                                    </Grid.RowDefinitions>
+                                    <Calendar 
+                                    SelectedDate="{Binding SelectDatetimes}"
+                                           HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top"  Style="{DynamicResource CalendarStyle1}"
+                                          CalendarButtonStyle="{DynamicResource CalendarButtonStyle1}" 
+                                          CalendarDayButtonStyle="{DynamicResource CalendarDayButtonStyle1}" 
+                                          CalendarItemStyle="{DynamicResource CalendarItemStyle1}"  Grid.RowSpan="2" Height="292"/>
+                                    <Button   Height="40" Grid.Row="1"  HorizontalAlignment="Right" Width="100" Padding="0" VerticalAlignment="Center" >
+                                        <materialDesign:PackIcon Kind="ZoomInCursor"
+                                                                 Height="38" Width="44">
+
+                                        </materialDesign:PackIcon>
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <RadioButton Content="Online" Command="{Binding ONLINE}" IsChecked="{Binding CheckOnline}" FontSize="30" Foreground="#FF08B017" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"  ></RadioButton>
+                                    <RadioButton  Command="{Binding OFFLINE}" CommandParameter="{Binding ElementName=TabControl,Path=SelectedIndex}"  IsChecked="{Binding CheckOffline}" Content="Offline" Grid.Row="1" VerticalAlignment="Center"
+                                             FontSize="30" Foreground="#FFE60000" HorizontalAlignment="Left" FontWeight="Bold" ></RadioButton>
+                                </Grid>
+                                <Grid Grid.Row="4" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="DB Date" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                    <Button   Command="{Binding Applycommand}" IsEnabled="{Binding IsenabledDate}" Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
+                                </Grid>
+                                <Grid Grid.Row="5" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="DB Product" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                    <Button Command="{Binding ApplyProduct}" IsEnabled="{Binding IsenabledProduct}" Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
+                                </Grid>
+                                <Grid Grid.Row="6" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="DB Shift" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                    <Button Command="{Binding ApplyShiftcommand}" IsEnabled="{Binding IsenabledShift}" Content="APPLY" FontSize="25" Grid.Row="2" Foreground="#FF0046FF" FontWeight="Bold" BorderBrush="#FFD30000" ></Button>
+                                    <ComboBox IsEnabled="{Binding IsenabledShift}" VerticalAlignment="Center" Grid.Row="1" FontSize="25" Foreground="Black" FontWeight="Bold" SelectedIndex="{Binding IndexShift}" >
+                                        <ComboBoxItem FontSize="25" >
+                                            Shift 1
+                                        </ComboBoxItem>
+                                        <ComboBoxItem FontSize="25">
+                                            Shift 2
+                                        </ComboBoxItem>
+                                        <ComboBoxItem FontSize="25">
+                                            Shift 3
+                                        </ComboBoxItem>
+                                    </ComboBox>
+                                </Grid>
+                                <Grid Grid.Row="7" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="DB Compare" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                    <Button Command="{Binding CompareCommand}" IsEnabled="{Binding IsenabledCompare}"  Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
+                                </Grid>
+                                <Grid Grid.Row="8" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Expander>
+                    <Grid Margin="0,0,0,0" Grid.Column="1" >
+                       
+                        <Border Margin="0,0,0,0" Background="White" CornerRadius="10" Grid.Row="2" >
+                            <Grid Margin="0,0,0,0" Grid.Row="2" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="97*"/>
+                                    <RowDefinition Height="109*"/>
+                                </Grid.RowDefinitions>
+                                <Label HorizontalAlignment="Right" VerticalAlignment="Top" Content="{Binding valueCPU}" FontSize="20" ></Label>
+                                <Label HorizontalAlignment="Right" VerticalAlignment="Top" Content="{Binding valueRam}" FontSize="20" Margin="0,0,200,0" ></Label>
+                                <TabControl  Name="TabControl" Style="{DynamicResource TabControlStyle}" Margin="0,5,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" >
+
+                                    <TabItem Header="    DATE    " FontSize="20" Style="{DynamicResource TabItemStyle}">
+                                        <Grid>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="0.5*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Margin="0,0,0,5" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid>
+                                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="DATA" FontSize="25" FontWeight="Bold" Foreground="Gray" ></TextBlock>
+                                                    </Grid>
+                                                    <Border Grid.Row="1" Margin="0,0,0,0"  Background="White"   CornerRadius="10" >
+                                                        <DataGrid Name="a" AutoGenerateColumns="False" ItemsSource="{Binding TableHoya1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"   Style="{DynamicResource DataGridStyle1}" FontSize="20" Margin="10" Grid.Row="0">
+                                                            <DataGrid.Columns>
+                                                                <DataGridTextColumn Width="1.5*"  Header="DATE" Binding="{Binding date , StringFormat=dd/MM/yyyy}" IsReadOnly="True"/>
+                                                                <DataGridTextColumn Header="TIME" Width="1.5*"  Binding="{ Binding Time }" />
+                                                                <DataGridTextColumn Header="BASKET" Binding="{Binding Basket}" IsReadOnly="True"/>
+                                                                <DataGridTextColumn Header="MODEL" Binding="{Binding Model}" ></DataGridTextColumn>
+                                                                <DataGridTemplateColumn Header="DETAL" >
+                                                                    <DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate  >
+                                                                            <Button HorizontalAlignment="Left" Content="Click"
+                                                                        DataContext="{StaticResource DBHoya1}"
+                                                                       Command="{Binding Click}" 
+                                                                   CommandParameter="{Binding ElementName=a, Path=SelectedItem}" Height="30" Width="60"/>
+                                                                        </DataTemplate>
+                                                                    </DataGridTemplateColumn.CellTemplate>
+                                                                </DataGridTemplateColumn>
+                                                            </DataGrid.Columns>
+                                                        </DataGrid>
+
+                                                    </Border>
+                                                </Grid>
+                                                <Grid Grid.Column="1" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid>
+                                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                                       Text="STATICS QUANTITY BY MODEL" FontSize="25" FontWeight="Bold" Foreground="Gray" ></TextBlock>
+                                                        </Grid>
+                                                        <Border Background="White" Margin="0,0,0,0" CornerRadius="10" Grid.Row="1">
+                                                            <Grid Margin="10" >
+                                                                <dxc:ChartControl  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="Disabled"
+                                                              Palette="{StaticResource ResourceKey=palette}">
+                                                                    <dxc:ChartControl.CrosshairOptions>
+                                                                        <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False"/>
+                                                                    </dxc:ChartControl.CrosshairOptions>
+                                                                    <dxc:XYDiagram2D Padding="0,0,0,0">
+                                                                        <dxc:XYDiagram2D.AxisX>
+                                                                            <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                                <dxc:AxisX2D.Label>
+                                                                                    <dxc:AxisLabel />
+                                                                                </dxc:AxisX2D.Label>
+                                                                                <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                                    <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                                </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                            </dxc:AxisX2D>
+                                                                        </dxc:XYDiagram2D.AxisX>
+                                                                        <dxc:XYDiagram2D.AxisY>
+                                                                            <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                                <dxc:AxisY2D.WholeRange>
+                                                                                    <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                                </dxc:AxisY2D.WholeRange>
+                                                                                <dxc:AxisY2D.Label>
+                                                                                    <dxc:AxisLabel  />
+                                                                                </dxc:AxisY2D.Label>
+                                                                            </dxc:AxisY2D>
+                                                                        </dxc:XYDiagram2D.AxisY>
+                                                                        <dxc:BarSideBySideSeries2D 
+                                                           
+                                                        DataSource="{Binding StatictisModel}" 
+                                                        DataContext="{StaticResource DBHoya1}"
+                                                        ArgumentDataMember="Argument"
+                                                        ValueDataMember="Value" 
+                                                        ColorEach="True" 
+                                                        LabelsVisibility="True" 
+                                                        LegendTextPattern="{}{A}"
+                                                        BarWidth="0.7">
+                                                                            <dxc:BarSideBySideSeries2D.Label>
+                                                                                <dxc:SeriesLabel dxc:BarSideBySideSeries2D.LabelPosition="Center" ResolveOverlappingMode="Default" Indent="15" FontSize="15" />
+                                                                            </dxc:BarSideBySideSeries2D.Label>
+                                                                            <dxc:BarSideBySideSeries2D.Model>
+                                                                                <dxc:BorderlessSimpleBar2DModel />
+                                                                            </dxc:BarSideBySideSeries2D.Model>
+                                                                        </dxc:BarSideBySideSeries2D>
+                                                                    </dxc:XYDiagram2D>
+
+                                                                </dxc:ChartControl>
+
+                                                            </Grid>
+                                                        </Border>
+
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition Width="0"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid Grid.Column="0" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="30"></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid>
+                                                                <TextBlock Text="PERCENT OF PRODUCTS BY MODELS" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                           Foreground="Gray" FontWeight="Bold"></TextBlock>
+                                                            </Grid>
+                                                            <Border Grid.Row="1" Background="White" CornerRadius="10" >
+                                                                <Grid>
+                                                                    <dxc:ChartControl Grid.Row="1" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=palette}">
+                                                                        <dxc:ChartControl.Legends>
+                                                                            <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                                        </dxc:ChartControl.Legends>
+                                                                        <dxc:SimpleDiagram2D>
+                                                                            <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressModelSL}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}: {V}"
+                                                         HoleRadiusPercent="50">
+
+                                                                                <dxc:PieSeries2D.Model>
+                                                                                    <dxc:GlarePie2DModel/>
+                                                                                </dxc:PieSeries2D.Model>
+
+                                                                                <dxc:PieSeries2D.Label>
+                                                                                    <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                                </dxc:PieSeries2D.Label>
+                                                                            </dxc:PieSeries2D>
+                                                                        </dxc:SimpleDiagram2D>
+                                                                    </dxc:ChartControl>
+
+                                                                    <Label Grid.Row="1" Content="{Binding Qtytoday}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,38" ></Label>
+
+                                                                </Grid>
+
+                                                            </Border>
+
+                                                        </Grid>
+                                                        <Grid Grid.Column="1" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="30"></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid>
+                                                                <TextBlock Text="PERCENT OF MODELS BY BASKET" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                           Foreground="Gray" FontWeight="Bold"></TextBlock>
+                                                            </Grid>
+                                                            <Border Background="White" CornerRadius="10" Grid.Row="1" >
+                                                                <Grid>
+                                                                    <dxc:ChartControl  Grid.Row="1" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=palette}">
+                                                                        <dxc:ChartControl.Legends>
+                                                                            <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                                        </dxc:ChartControl.Legends>
+                                                                        <dxc:SimpleDiagram2D>
+                                                                            <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressModel}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}: {V}"
+                                                         HoleRadiusPercent="50">
+
+                                                                                <dxc:PieSeries2D.Model>
+                                                                                    <dxc:GlarePie2DModel/>
+                                                                                </dxc:PieSeries2D.Model>
+
+                                                                                <dxc:PieSeries2D.Label>
+                                                                                    <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                                </dxc:PieSeries2D.Label>
+                                                                            </dxc:PieSeries2D>
+                                                                        </dxc:SimpleDiagram2D>
+                                                                    </dxc:ChartControl>
+                                                                    <Label Grid.Row="1" Margin="0,0,0,38" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Content="{Binding SLBasket}" ></Label>
+
+                                                                </Grid>
+                                                            </Border>
+
+                                                        </Grid>
+                                                        <Grid Grid.Column="2"></Grid>
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Grid.Row="2" Margin="0,5,0,0" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold"
+                                                               Text="STATICS QUANTITY BY HOUR" Foreground="Gray" ></TextBlock>
+                                                </Grid>
+                                                <Border Grid.Row="2" Margin="0,0,0,0" Background="White" CornerRadius="10">
+                                                    <Grid>
+                                                        <dxc:ChartControl Grid.Row="1" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="OnDataChanged"
+                                                              Palette="{StaticResource ResourceKey=palettetoday}">
+                                                            <dxc:ChartControl.CrosshairOptions>
+                                                                <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False"/>
+                                                            </dxc:ChartControl.CrosshairOptions>
+                                                            <dxc:XYDiagram2D Padding="0,0,0,0" >
+                                                                <dxc:XYDiagram2D.AxisX>
+                                                                    <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                        <dxc:AxisX2D.Label>
+                                                                            <dxc:AxisLabel />
+                                                                        </dxc:AxisX2D.Label>
+                                                                        <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                            <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                        </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                    </dxc:AxisX2D>
+                                                                </dxc:XYDiagram2D.AxisX>
+                                                                <dxc:XYDiagram2D.AxisY>
+                                                                    <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                        <dxc:AxisY2D.WholeRange>
+                                                                            <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                        </dxc:AxisY2D.WholeRange>
+                                                                        <dxc:AxisY2D.Label>
+                                                                            <dxc:AxisLabel></dxc:AxisLabel>
+                                                                        </dxc:AxisY2D.Label>
+                                                                    </dxc:AxisY2D>
+                                                                </dxc:XYDiagram2D.AxisY>
+                                                                <dxc:BarSideBySideSeries2D 
+                                                           
+                                                        DataSource="{Binding StatictisHourDay}" 
+                                                        DataContext="{StaticResource DBHoya1}"
+                                                        ArgumentDataMember="Argument"
+                                                        ValueDataMember="Value" 
+                                                        ColorEach="True" 
+                                                        LabelsVisibility="True" 
+                                                        LegendTextPattern="{}{A}"
+                                                        BarWidth="0.7">
+                                                                    <dxc:BarSideBySideSeries2D.Label>
+                                                                        <dxc:SeriesLabel dxc:BarSideBySideSeries2D.LabelPosition="Center" ResolveOverlappingMode="Default" Indent="15" FontSize="15" />
+                                                                    </dxc:BarSideBySideSeries2D.Label>
+                                                                    <dxc:BarSideBySideSeries2D.Model>
+                                                                        <dxc:BorderlessSimpleBar2DModel />
+                                                                    </dxc:BarSideBySideSeries2D.Model>
+                                                                </dxc:BarSideBySideSeries2D>
+                                                            </dxc:XYDiagram2D>
+                                                            <dxc:ChartControl.Legends>
+
+                                                            </dxc:ChartControl.Legends>
+                                                        </dxc:ChartControl>
+                                                        <Label Grid.Row="1" Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,23" Background="White" Panel.ZIndex="1" BorderThickness="1" BorderBrush="Black"
+                                         Content="{Binding Qtytoday}"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Foreground="Black"/>
+
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Style="{DynamicResource TabItemStyle}"  Header="    PRODUCT    " FontSize="20"  >
+                                        <Grid Background="#FFE5E5E5" >
+                                            <Grid Grid.Row="1"  >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition Width="0.7*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid Margin="0,0,0,5"   >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid  >
+                                                            <TextBlock Foreground="Gray" FontWeight="Bold" Text="DAILY PRODYCTS PERFORMANCE" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+
+                                                        </Grid>
+                                                        <Border  Background="White" CornerRadius="10" Grid.RowSpan="2" Grid.Row="1" >
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition Height="0.2*"></RowDefinition>
+                                                                </Grid.RowDefinitions>
+                                                                <Grid Grid.Row="0" >
+                                                                    <dxc:ChartControl BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" Palette="{StaticResource ResourceKey=palette}" AnimationMode="Disabled">
+                                                                        <dxc:ChartControl.CrosshairOptions>
+                                                                            <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False" />
+                                                                        </dxc:ChartControl.CrosshairOptions>
+                                                                        <dxc:XYDiagram2D Padding="0,0,0,0">
+                                                                            <dxc:XYDiagram2D.AxisX >
+                                                                                <dxc:AxisX2D  TickmarksMinorVisible="False" TickmarksVisible="False">
+                                                                                    <dxc:AxisX2D.Label>
+                                                                                        <dxc:AxisLabel />
+                                                                                    </dxc:AxisX2D.Label>
+                                                                                    <dxc:AxisX2D.WholeRange>
+                                                                                        <dxc:Range AutoSideMargins="False"/>
+                                                                                    </dxc:AxisX2D.WholeRange>
+                                                                                    <dxc:AxisX2D.DateTimeScaleOptions>
+                                                                                        <dxc:ManualDateTimeScaleOptions AutoGrid="False"/>
+                                                                                    </dxc:AxisX2D.DateTimeScaleOptions>
+                                                                                </dxc:AxisX2D>
+                                                                            </dxc:XYDiagram2D.AxisX>
+                                                                            <dxc:XYDiagram2D.AxisY>
+                                                                                <dxc:AxisY2D TickmarksMinorVisible="False" TickmarksVisible="False">
+                                                                                    <dxc:AxisY2D.Label>
+                                                                                        <dxc:AxisLabel  />
+                                                                                    </dxc:AxisY2D.Label>
+                                                                                    <dxc:AxisY2D.WholeRange>
+                                                                                        <dxc:Range AutoSideMargins="False" />
+                                                                                    </dxc:AxisY2D.WholeRange>
+                                                                                </dxc:AxisY2D>
+                                                                            </dxc:XYDiagram2D.AxisY>
+                                                                            <dxc:AreaSeries2D DataSource="{Binding DataProduct}" 
+                                                                                  ArgumentDataMember="Argument"
+                                                                                  ValueDataMember="value" 
+                                                                                  MarkerVisible="True"
+                                                                                 MarkerSize="10"
+                                                                                  Transparency="0.2" LabelsVisibility="False"
+                                                                                  DataContext="{StaticResource DBHoya1}">
+                                                                                <dxc:AreaSeries2D.Border>
+                                                                                    <dxc:SeriesBorder Brush="Transparent" />
+                                                                                </dxc:AreaSeries2D.Border>
+                                                                            </dxc:AreaSeries2D>
+                                                                        </dxc:XYDiagram2D>
+                                                                    </dxc:ChartControl>
+
+                                                                    <Label Width="156" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,25" Background="White" Panel.ZIndex="1" BorderThickness="1" BorderBrush="Gray"
+                                                          Content="{Binding day}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" FontSize="25" Height="40"/>
+                                                                    <Label   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCBEAE8" Panel.ZIndex="1" BorderThickness="1" BorderBrush="Gray"
+                                                          Content="{Binding slday}"  HorizontalContentAlignment="Center" FontSize="30" Opacity="0.5" VerticalContentAlignment="Center" Margin="80,0,0,0" Height="48" Width="200"/>
+
+                                                                </Grid>
+                                                                <Grid Grid.Row="2" >
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition/>
+                                                                        <ColumnDefinition/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Button Content="YESTODAY"  Command="{Binding Yestoday}" Margin="0,0,10,0" Grid.Column="0" FontWeight="Bold" />
+                                                                    <Button Content="TODAY" Command="{Binding Today}" Margin="10,0,0,0" Grid.Column="1" FontWeight="Bold" />
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Border>
+
+
+                                                    </Grid>
+
+
+                                                    <Grid Margin="0,5,0,5" Grid.Row="1" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition ></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid  >
+                                                            <TextBlock Foreground="Gray" FontWeight="Bold" Text="MONTHLY PRODYCTS PERFORMANCE" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+                                                        </Grid>
+                                                        <Grid Grid.Row="1" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition Height="0.2*"></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Border Background="White" CornerRadius="10" >
+                                                                <Grid>
+                                                                    <dxc:ChartControl BorderBrush="Transparent"  BorderThickness="0" Background="Transparent" Padding="0" >
+                                                                        <dxc:ChartControl.CrosshairOptions>
+                                                                            <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False" />
+                                                                        </dxc:ChartControl.CrosshairOptions>
+                                                                        <dxc:XYDiagram2D Padding="0,0,0,0">
+                                                                            <dxc:XYDiagram2D.AxisX>
+                                                                                <dxc:AxisX2D TickmarksMinorVisible="False" TickmarksVisible="False">
+                                                                                    <dxc:AxisX2D.Label>
+                                                                                        <dxc:AxisLabel />
+                                                                                    </dxc:AxisX2D.Label>
+                                                                                    <dxc:AxisX2D.WholeRange>
+                                                                                        <dxc:Range AutoSideMargins="False"  />
+                                                                                    </dxc:AxisX2D.WholeRange>
+                                                                                    <dxc:AxisX2D.DateTimeScaleOptions>
+                                                                                        <dxc:ManualDateTimeScaleOptions AutoGrid="False"/>
+                                                                                    </dxc:AxisX2D.DateTimeScaleOptions>
+                                                                                </dxc:AxisX2D>
+                                                                            </dxc:XYDiagram2D.AxisX>
+                                                                            <dxc:XYDiagram2D.AxisY>
+                                                                                <dxc:AxisY2D TickmarksMinorVisible="False" TickmarksVisible="False">
+                                                                                    <dxc:AxisY2D.Label>
+                                                                                        <dxc:AxisLabel  />
+                                                                                    </dxc:AxisY2D.Label>
+                                                                                    <dxc:AxisY2D.WholeRange>
+                                                                                        <dxc:Range AutoSideMargins="False" />
+                                                                                    </dxc:AxisY2D.WholeRange>
+                                                                                </dxc:AxisY2D>
+                                                                            </dxc:XYDiagram2D.AxisY>
+                                                                            <dxc:AreaSeries2D DataSource="{Binding DataProductMonth}" 
+                                                                                ArgumentDataMember="Argument"
+                                                                              ValueDataMember="value" 
+                                                                                  MarkerVisible="True"
+                                                  MarkerSize="10"
+                                                                             Transparency="0.2" LabelsVisibility="False"
+                                                                              DataContext="{StaticResource DBHoya1}">
+                                                                                <dxc:AreaSeries2D.Border>
+                                                                                    <dxc:SeriesBorder Brush="Transparent" />
+                                                                                </dxc:AreaSeries2D.Border>
+                                                                            </dxc:AreaSeries2D>
+                                                                        </dxc:XYDiagram2D>
+                                                                    </dxc:ChartControl>
+                                                                    <Label Width="156" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,25" Background="White" Panel.ZIndex="1" BorderThickness="1" BorderBrush="Gray"
+                                                            Content="{Binding month}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" FontSize="25" Height="40"/>
+                                                                    <Label  VerticalAlignment="Top" HorizontalAlignment="Left"  Background="#FFCBEAE8" Panel.ZIndex="1" BorderThickness="1" BorderBrush="Gray"
+                                                            Content="{Binding slmonth}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="80,0,0,0" FontSize="30" Height="48" Width="200"/>
+
+                                                                </Grid>
+                                                            </Border>
+
+                                                            <Grid Grid.Row="1" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition/>
+                                                                    <ColumnDefinition/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Button Content="LAST MONTH"  Command="{Binding LastMonth}" Margin="0,0,10,0" Grid.Column="0" FontWeight="Bold" />
+                                                                <Button Content="THIS MONTH" Command="{Binding ThisMonth}" Margin="10,0,0,0" Grid.Column="1" FontWeight="Bold" />
+                                                            </Grid>
+                                                        </Grid>
+
+                                                    </Grid>
+
+
+                                                    <Grid Margin="0,5,0,0" Grid.Row="3"  >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition ></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid  >
+                                                            <TextBlock Foreground="Gray" FontWeight="Bold" Text="YEARLY PRODYCTS PERFORMANCE" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+                                                        </Grid>
+                                                        <Grid Grid.Row="1" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition Height="0.2*"></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Border Background="White" CornerRadius="10" >
+                                                                <Grid>
+                                                                    <dxc:ChartControl BorderBrush="Transparent"  BorderThickness="0" Background="Transparent" Padding="0" >
+                                                                        <dxc:ChartControl.CrosshairOptions>
+                                                                            <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False" />
+                                                                        </dxc:ChartControl.CrosshairOptions>
+                                                                        <dxc:XYDiagram2D Padding="0,0,0,0">
+                                                                            <dxc:XYDiagram2D.AxisX>
+                                                                                <dxc:AxisX2D TickmarksMinorVisible="False" TickmarksVisible="False">
+                                                                                    <dxc:AxisX2D.Label>
+                                                                                        <dxc:AxisLabel />
+                                                                                    </dxc:AxisX2D.Label>
+                                                                                    <dxc:AxisX2D.WholeRange>
+                                                                                        <dxc:Range AutoSideMargins="False"  />
+                                                                                    </dxc:AxisX2D.WholeRange>
+                                                                                    <dxc:AxisX2D.DateTimeScaleOptions>
+                                                                                        <dxc:ManualDateTimeScaleOptions AutoGrid="False"/>
+                                                                                    </dxc:AxisX2D.DateTimeScaleOptions>
+                                                                                </dxc:AxisX2D>
+                                                                            </dxc:XYDiagram2D.AxisX>
+                                                                            <dxc:XYDiagram2D.AxisY>
+                                                                                <dxc:AxisY2D TickmarksMinorVisible="False" TickmarksVisible="False">
+                                                                                    <dxc:AxisY2D.Label>
+                                                                                        <dxc:AxisLabel  />
+                                                                                    </dxc:AxisY2D.Label>
+                                                                                    <dxc:AxisY2D.WholeRange>
+                                                                                        <dxc:Range AutoSideMargins="False" />
+                                                                                    </dxc:AxisY2D.WholeRange>
+                                                                                </dxc:AxisY2D>
+                                                                            </dxc:XYDiagram2D.AxisY>
+                                                                            <dxc:AreaSeries2D DataSource="{Binding DataProductYear}" 
+                                                                                ArgumentDataMember="Argument"
+                                                                              ValueDataMember="value" 
+                                                                                  MarkerVisible="True"
+                                          MarkerSize="10"
+                                                                             Transparency="0.2" LabelsVisibility="False"
+                                                                              DataContext="{StaticResource DBHoya1}">
+                                                                                <dxc:AreaSeries2D.Border>
+                                                                                    <dxc:SeriesBorder Brush="Transparent" />
+                                                                                </dxc:AreaSeries2D.Border>
+                                                                            </dxc:AreaSeries2D>
+                                                                        </dxc:XYDiagram2D>
+                                                                    </dxc:ChartControl>
+                                                                    <Label Width="156" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,25" Background="White" Panel.ZIndex="1" BorderThickness="1" BorderBrush="Gray"
+                                                            Content="{Binding year,StringFormat=yyyy}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" FontSize="25" Height="40"/>
+                                                                    <Label  VerticalAlignment="Top" HorizontalAlignment="Left"  Background="#FFCBEAE8" Panel.ZIndex="1" BorderThickness="1" BorderBrush="Gray"
+                                                            Content="{Binding slyear}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="80,0,0,0" FontSize="30" Height="48" Width="200"/>
+
+                                                                </Grid>
+                                                            </Border>
+
+                                                            <Grid Grid.Row="1" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition/>
+                                                                    <ColumnDefinition/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Button Content="LAST YEAR"  Command="{Binding LastYear}" Margin="0,0,10,0" Grid.Column="0" FontWeight="Bold" />
+                                                                <Button Content="THIS YEAR" Command="{Binding ThisYear}" Margin="10,0,0,0" Grid.Column="1" FontWeight="Bold" />
+                                                            </Grid>
+                                                        </Grid>
+
+                                                    </Grid>
+
+                                                </Grid>
+
+                                                <Grid Grid.Column="1" Margin="20,0,0,0" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition/>
+                                                        <RowDefinition/>
+                                                        <RowDefinition/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0" >
+
+
+
+                                                        <Grid Grid.Column="1" >
+                                                            <Border Grid.Row="2" CornerRadius="10"  Margin="0,0,0,5" >
+                                                                <Grid  >
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="30"></RowDefinition>
+                                                                        <RowDefinition Height="0.5*"></RowDefinition>
+                                                                        <RowDefinition></RowDefinition>
+                                                                        <RowDefinition></RowDefinition>
+                                                                        <RowDefinition></RowDefinition>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid>
+                                                                        <TextBlock Text="COMPARE QUANTITY" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="25" Foreground="Gray" FontWeight="Bold"></TextBlock>
+                                                                    </Grid>
+                                                                    <Grid Grid.Row="1" >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition></ColumnDefinition>
+
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid Background="AliceBlue">
+                                                                            <TextBlock Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"></TextBlock>
+
+                                                                        </Grid>
+                                                                        <Grid  Background="AliceBlue" Grid.Column="1" Margin="5,0,0,0">
+                                                                            <TextBlock  Text="{Binding timetoday, StringFormat=dd/MM/yyyy}" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="-50,0,0,0" Foreground="Black" FontWeight="Bold" ></TextBlock>
+
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="2" Background="AliceBlue"  Margin="5,0,0,0" >
+                                                                            <TextBlock Text="{Binding timelasttoday, StringFormat=dd/MM/yyyy}" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold" ></TextBlock>
+
+                                                                        </Grid>
+
+
+
+
+                                                                    </Grid>
+                                                                    <Grid Grid.Row="2"  >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition></ColumnDefinition>
+                                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition></ColumnDefinition>
+
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid Grid.Column="0" Margin="0,5,0,0" Background="AliceBlue" >
+                                                                            <TextBlock Text="DATE" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="Black"
+                                                                   ></TextBlock>
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="1" Margin="5,5,0,0"  Background="AliceBlue" >
+                                                                            <TextBlock Text="{Binding sltoday }" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Foreground="Black" ></TextBlock>
+
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="2" Margin="0,5,0,0" Background="AliceBlue" >
+                                                                            <Image Margin="10,0,0,0" HorizontalAlignment="Left" Source="{Binding ImgTangday}"/>
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="3" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                            <TextBlock Text="{Binding slyesterday }" VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center" Foreground="Black" ></TextBlock>
+
+                                                                        </Grid>
+
+
+                                                                    </Grid>
+
+                                                                    <Grid Grid.Row="3" >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition></ColumnDefinition>
+                                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition></ColumnDefinition>
+
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid Background="AliceBlue" Margin="0,5,0,0" >
+                                                                            <TextBlock Text="MONTH" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                   Foreground="Black" FontSize="20"></TextBlock>
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="1" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                            <TextBlock HorizontalAlignment="Center" Text="{Binding slthismonth }" VerticalAlignment="Center" FontSize="30" Foreground="Black" ></TextBlock>
+
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="2" Margin="0,5,0,0" Background="AliceBlue" >
+                                                                            <Image Margin="10,0,0,0" HorizontalAlignment="Left" Source="{Binding ImgTangmonth}" />
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="3" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                            <TextBlock Text="{Binding sllastmonth}" VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center" Foreground="Black" ></TextBlock>
+
+                                                                        </Grid>
+
+
+
+                                                                    </Grid>
+
+                                                                    <Grid Grid.Row="4" >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition></ColumnDefinition>
+                                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                            <ColumnDefinition></ColumnDefinition>
+
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid Background="AliceBlue" Margin="0,5,0,0" >
+                                                                            <TextBlock Text="YEAR" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                   Foreground="Black" FontSize="20"></TextBlock>
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="1" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                            <TextBlock HorizontalAlignment="Center" Text="{Binding slthisyear }" VerticalAlignment="Center" FontSize="30" Foreground="Black" ></TextBlock>
+
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="2" Margin="0,5,0,0" Background="AliceBlue" >
+                                                                            <Image Margin="10,0,0,0" HorizontalAlignment="Left" Source="{Binding ImgTangyear}" />
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="3" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                            <TextBlock Text="{Binding sllastyear}" VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center" Foreground="Black" ></TextBlock>
+
+                                                                        </Grid>
+
+
+
+                                                                    </Grid>
+                                                                </Grid>
+
+                                                            </Border>
+
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Grid.Row="1" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition Width="0"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid>
+                                                            <dxc:ChartControl Grid.Row="1" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=palette}">
+                                                                <dxc:ChartControl.Legends>
+                                                                    <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                                </dxc:ChartControl.Legends>
+                                                                <dxc:SimpleDiagram2D>
+                                                                    <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressModelSLMonth}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}: {V}"
+                                                         HoleRadiusPercent="50">
+
+                                                                        <dxc:PieSeries2D.Model>
+                                                                            <dxc:GlarePie2DModel/>
+                                                                        </dxc:PieSeries2D.Model>
+
+                                                                        <dxc:PieSeries2D.Label>
+                                                                            <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                        </dxc:PieSeries2D.Label>
+                                                                    </dxc:PieSeries2D>
+                                                                </dxc:SimpleDiagram2D>
+                                                            </dxc:ChartControl>
+
+                                                            <Label Grid.Row="1" Content="{Binding QtyThismonth}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,38" ></Label>
+
+                                                        </Grid>
+
+                                                    </Grid>
+                                                    <Grid Grid.Row="2" Margin="0,5,0,0" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Border Background="White" CornerRadius="10" Grid.Row="1" >
+                                                            <Grid Grid.Row="1" >
+
+                                                                <dxc:ChartControl Grid.Row="1"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="OnDataChanged"
+                                                                    Palette="{StaticResource ResourceKey=palette}">
+                                                                    <dxc:ChartControl.CrosshairOptions>
+                                                                        <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="True"/>
+                                                                    </dxc:ChartControl.CrosshairOptions>
+                                                                    <dxc:XYDiagram2D SeriesItemsSource="{Binding Seriesyear }" DataContext="{StaticResource DBHoya1}">
+                                                                        <dxc:XYDiagram2D.AxisX>
+                                                                            <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                                <dxc:AxisX2D.Label>
+                                                                                    <dxc:AxisLabel FontSize= "20"/>
+                                                                                </dxc:AxisX2D.Label>
+                                                                                <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                                    <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                                </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                            </dxc:AxisX2D>
+                                                                        </dxc:XYDiagram2D.AxisX>
+                                                                        <dxc:XYDiagram2D.AxisY>
+                                                                            <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                                <dxc:AxisY2D.WholeRange>
+                                                                                    <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                                </dxc:AxisY2D.WholeRange>
+                                                                                <dxc:AxisY2D.Label >
+                                                                                    <dxc:AxisLabel FontSize="20" />
+                                                                                </dxc:AxisY2D.Label>
+                                                                            </dxc:AxisY2D>
+                                                                        </dxc:XYDiagram2D.AxisY>
+                                                                        <dxc:XYDiagram2D.SeriesItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <dxc:BarSideBySideSeries2D DataSource="{Binding Values}" 
+                                                                        DisplayName ="{Binding Name}"
+                                                                                     FontSize="20"
+                                                                        ArgumentDataMember="Argument"
+                                                                        ValueDataMember="Value" 
+                                                                        ColorEach="False" 
+                                                                        LabelsVisibility="True" 
+                                                                        BarWidth="0.7">
+                                                                                    <dxc:BarSideBySideSeries2D.Label>
+                                                                                        <dxc:SeriesLabel dxc:BarSideBySideSeries2D.LabelPosition="Center" ResolveOverlappingMode="Default" Indent="15" FontSize="10" />
+                                                                                    </dxc:BarSideBySideSeries2D.Label>
+                                                                                </dxc:BarSideBySideSeries2D>
+
+                                                                            </DataTemplate>
+
+
+                                                                        </dxc:XYDiagram2D.SeriesItemTemplate>
+                                                                    </dxc:XYDiagram2D>
+
+                                                                    <dxc:ChartControl.Legends>
+                                                                        <dxc:Legend HorizontalPosition="Center" 
+                                                                
+                                                                         VerticalPosition="BottomOutside"
+                                                                         Orientation="Horizontal"
+                                                                         ReverseItems="True"
+                                                                         Height="25"
+                                                                         Padding="0"/>
+                                                                    </dxc:ChartControl.Legends>
+                                                                </dxc:ChartControl>
+
+
+
+                                                            </Grid>
+                                                        </Border>
+
+
+
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem  Style="{DynamicResource TabItemStyle}" Header="    SHIFT    " FontSize="20"  >
+                                        <Grid Background="#FFE5E5E5" >
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.2*"/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0" Grid.ColumnSpan="2" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="419"/>
+                                                    <ColumnDefinition Width="839*"/>
+                                                    <ColumnDefinition Width="335*" ></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid>
+
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition ></RowDefinition>
+                                                        <RowDefinition Height="0"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock  HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center" Text="{Binding Shift}" Foreground="Red" FontWeight="Bold" ></TextBlock>
+                                                    <Border Margin="0,0,10,0" CornerRadius="5" Background="White" Grid.Row="1"  >
+                                                        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding listShift }" HorizontalAlignment="Center" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"   Style="{DynamicResource DataGridStyle1}" FontSize="20" Margin="10" Grid.Row="0">
+                                                            <DataGrid.Columns>
+                                                                <DataGridTextColumn Header="Time" Binding="{Binding Hour}" ></DataGridTextColumn>
+                                                                <DataGridTextColumn Header="Baket" Binding="{Binding Basket}" ></DataGridTextColumn>
+                                                                <DataGridTextColumn Header="Model" Binding="{Binding Model}" ></DataGridTextColumn>
+                                                                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" ></DataGridTextColumn>
+                                                            </DataGrid.Columns>
+                                                        </DataGrid>
+                                                    </Border>
+                                                    <Grid Background="White" Grid.Row="2" >
+
+                                                    </Grid>
+
+
+
+                                                </Grid>
+                                                <Grid Grid.Column="1" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition ></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Text="STATICTIS QUANTITY BY HOURS" FontSize="25" VerticalAlignment="Center" Foreground="Gray" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                                    <Grid Grid.Row="1" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Border Background="White" Margin="5,0,0,2" CornerRadius="10" >
+                                                            <dxc:ChartControl  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="Disabled"
+                                                                  Palette="{StaticResource ResourceKey=palette2}">
+                                                                <dxc:ChartControl.CrosshairOptions>
+                                                                    <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False"/>
+                                                                </dxc:ChartControl.CrosshairOptions>
+                                                                <dxc:XYDiagram2D   Padding="0,0,0,0">
+                                                                    <dxc:XYDiagram2D.AxisX>
+                                                                        <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                            <dxc:AxisX2D.Label>
+                                                                                <dxc:AxisLabel />
+                                                                            </dxc:AxisX2D.Label>
+                                                                            <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                                <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                            </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                        </dxc:AxisX2D>
+                                                                    </dxc:XYDiagram2D.AxisX>
+                                                                    <dxc:XYDiagram2D.AxisY>
+                                                                        <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                            <dxc:AxisY2D.WholeRange>
+                                                                                <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                            </dxc:AxisY2D.WholeRange>
+                                                                            <dxc:AxisY2D.Label>
+                                                                                <dxc:AxisLabel  />
+                                                                            </dxc:AxisY2D.Label>
+                                                                        </dxc:AxisY2D>
+                                                                    </dxc:XYDiagram2D.AxisY>
+                                                                    <dxc:BarSideBySideSeries2D 
+                                                           
+                                                            DataSource="{Binding StatictisHourShift1}" 
+                                                            DataContext="{StaticResource DBHoya1}"
+                                                            ArgumentDataMember="Argument"
+                                                            ValueDataMember="Value" 
+                                                            ColorEach="True" 
+                                                            LabelsVisibility="True" 
+                                                            LegendTextPattern="{}{A}"
+                                                            BarWidth="0.7">
+                                                                        <dxc:BarSideBySideSeries2D.Label>
+                                                                            <dxc:SeriesLabel dxc:BarSideBySideSeries2D.LabelPosition="Center" ResolveOverlappingMode="Default" Indent="15" FontSize="15" />
+                                                                        </dxc:BarSideBySideSeries2D.Label>
+                                                                        <dxc:BarSideBySideSeries2D.Model>
+                                                                            <dxc:BorderlessSimpleBar2DModel />
+                                                                        </dxc:BarSideBySideSeries2D.Model>
+                                                                    </dxc:BarSideBySideSeries2D>
+                                                                    <dxc:LineSeries2D
+                                                                ColorEach="True"
+                                                                DataSource="{Binding YesterdayStatictisHourShift1}" 
+                                                            DataContext="{StaticResource DBHoya1}"
+                                                            ArgumentDataMember="Argument"
+                                                            ValueDataMember="Value" 
+                                                               
+                                    MarkerSize="15"
+                                    MarkerVisible="True"
+                                                                >
+
+                                                                    </dxc:LineSeries2D>
+                                                                </dxc:XYDiagram2D>
+
+                                                            </dxc:ChartControl>
+
+                                                        </Border>
+
+                                                        <Grid Grid.Row="1" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="30"></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid>
+                                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                                       Text="STATICS QUANTITY BY MODEL" FontSize="25" FontWeight="Bold" Foreground="Gray" ></TextBlock>
+                                                            </Grid>
+                                                            <Border Background="White" CornerRadius="10" Grid.Row="1" >
+                                                                <dxc:ChartControl Grid.Row="1"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="Disabled"
+                                                                  Palette="{StaticResource ResourceKey=palette}">
+                                                                    <dxc:ChartControl.CrosshairOptions>
+                                                                        <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False"/>
+                                                                    </dxc:ChartControl.CrosshairOptions>
+                                                                    <dxc:XYDiagram2D Padding="0,0,0,0">
+                                                                        <dxc:XYDiagram2D.AxisX>
+                                                                            <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                                <dxc:AxisX2D.Label>
+                                                                                    <dxc:AxisLabel />
+                                                                                </dxc:AxisX2D.Label>
+                                                                                <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                                    <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                                </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                            </dxc:AxisX2D>
+                                                                        </dxc:XYDiagram2D.AxisX>
+                                                                        <dxc:XYDiagram2D.AxisY>
+                                                                            <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                                <dxc:AxisY2D.WholeRange>
+                                                                                    <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                                </dxc:AxisY2D.WholeRange>
+                                                                                <dxc:AxisY2D.Label>
+                                                                                    <dxc:AxisLabel  />
+                                                                                </dxc:AxisY2D.Label>
+                                                                            </dxc:AxisY2D>
+                                                                        </dxc:XYDiagram2D.AxisY>
+                                                                        <dxc:BarSideBySideSeries2D 
+                                                           
+                                                            DataSource="{Binding StatictisHourShift}" 
+                                                            DataContext="{StaticResource DBHoya1}"
+                                                            ArgumentDataMember="Argument"
+                                                            ValueDataMember="Value" 
+                                                            ColorEach="True" 
+                                                            LabelsVisibility="True" 
+                                                            LegendTextPattern="{}{A}"
+                                                            BarWidth="0.7">
+                                                                            <dxc:BarSideBySideSeries2D.Label>
+                                                                                <dxc:SeriesLabel dxc:BarSideBySideSeries2D.LabelPosition="Center" ResolveOverlappingMode="Default" Indent="15" FontSize="15" />
+                                                                            </dxc:BarSideBySideSeries2D.Label>
+                                                                            <dxc:BarSideBySideSeries2D.Model>
+                                                                                <dxc:BorderlessSimpleBar2DModel />
+                                                                            </dxc:BarSideBySideSeries2D.Model>
+                                                                        </dxc:BarSideBySideSeries2D>
+                                                                    </dxc:XYDiagram2D>
+
+                                                                </dxc:ChartControl>
+
+                                                            </Border>
+
+                                                        </Grid>
+
+
+
+                                                    </Grid>
+
+                                                </Grid>
+                                                <Grid Grid.Column="2" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid>
+                                                        <TextBlock Text="WORKING TIME" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="25" Foreground="Gray" FontWeight="Bold"></TextBlock>
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <dxc:ChartControl Grid.Row="2" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=palettetime}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressShiftTime}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}:{V}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+                                                        <Label Content="8" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,38" ></Label>
+
+                                                    </Grid>
+                                                    <Border Grid.Row="2" CornerRadius="10" Background="White" Margin="10,5,0,0" >
+                                                        <Grid  >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="30"></RowDefinition>
+                                                                <RowDefinition Height="0.5*"></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition/>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid>
+                                                                <TextBlock Text="COMPARE" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="25" Foreground="Gray" FontWeight="Bold"></TextBlock>
+                                                            </Grid>
+                                                            <Grid Grid.Row="1" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid Background="AliceBlue">
+                                                                    <TextBlock Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"></TextBlock>
+
+                                                                </Grid>
+                                                                <Grid  Background="AliceBlue" Grid.Column="1" Margin="5,0,0,0">
+                                                                    <TextBlock  Text="Today" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="-50,0,0,0" Foreground="Black" FontWeight="Bold" ></TextBlock>
+
+                                                                </Grid>
+                                                                <Grid Grid.Column="2" Background="AliceBlue"  Margin="5,0,0,0" >
+                                                                    <TextBlock Text="Yesterday" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Left" Foreground="Black" FontWeight="Bold" ></TextBlock>
+
+                                                                </Grid>
+
+
+
+                                                            </Grid>
+                                                            <Grid Grid.Row="2"  >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid Grid.Column="0" Margin="0,5,0,0" Background="AliceBlue" >
+                                                                    <TextBlock Text="Quantity" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="Black"
+                                                                   ></TextBlock>
+                                                                </Grid>
+                                                                <Grid Grid.Column="1" Margin="5,5,0,0"  Background="AliceBlue" >
+                                                                    <TextBlock Text="{Binding QuantityShiftToday}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="Black" ></TextBlock>
+
+                                                                </Grid>
+                                                                <Grid Grid.Column="2" Margin="0,5,0,0" Background="AliceBlue" >
+                                                                    <Image Margin="10,0,0,0" HorizontalAlignment="Left" Source="{Binding ImgTang}"/>
+                                                                </Grid>
+                                                                <Grid Grid.Column="3" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                    <TextBlock Text="{Binding QuantityShiftYesterday}" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Center" Foreground="Black" ></TextBlock>
+
+                                                                </Grid>
+
+                                                            </Grid>
+                                                            <!--@"F:\Cong_Viec\IOT\IotFactory\IotFactory\SourcesImage\Image\trendUp.png"-->
+                                                            <Grid Grid.Row="3" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid Background="AliceBlue" Margin="0,5,0,0" >
+                                                                    <TextBlock Text="Basket" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                   Foreground="Black" FontSize="15"></TextBlock>
+                                                                </Grid>
+                                                                <Grid Grid.Column="1" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                    <TextBlock HorizontalAlignment="Center" Text="{Binding BasketShiftToday}" VerticalAlignment="Center" FontSize="20" Foreground="Black" ></TextBlock>
+
+                                                                </Grid>
+                                                                <Grid Grid.Column="2" Margin="0,5,0,0" Background="AliceBlue" >
+                                                                    <Image Margin="10,0,0,0" HorizontalAlignment="Left" Source="{Binding ImgTang1}" />
+                                                                </Grid>
+                                                                <Grid Grid.Column="3" Margin="5,5,0,0" Background="AliceBlue" >
+                                                                    <TextBlock Text="{Binding BasketShiftYesterday}" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Center" Foreground="Black" ></TextBlock>
+
+                                                                </Grid>
+
+
+                                                            </Grid>
+                                                            <Button Margin="0,5,0,0" Grid.Row="4" Command="{Binding ClickSS}" Content="Click" ></Button>
+                                                        </Grid>
+
+                                                    </Border>
+
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.ColumnSpan="2" >
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="0.1*"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock HorizontalAlignment="Center" Foreground="Gray" VerticalAlignment="Center" Text=" STATICS QUANTITY BY SHIFT" FontSize="25" FontWeight="Bold" />
+
+                                                <Grid Grid.Row="1" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="1">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*"></RowDefinition>
+                                                            <RowDefinition Height="0.2*"></RowDefinition>
+                                                            <RowDefinition ></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Border Margin="5,0,5,0" Background="White" ></Border>
+                                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                          FontWeight="Bold"
+                                                           Text="BASKET" FontSize="20" Foreground="Black" ></TextBlock>
+                                                        <dxc:ChartControl Grid.Row="2" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=paletteBASKET}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressShif1}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                                        dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+
+                                                        <Grid Margin="5,0,5,0" Background="White" Grid.Row="1">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock VerticalAlignment="Center" Text="Total Shift:" FontSize="20" Foreground="#9462ae" ></TextBlock>
+                                                            <TextBlock Grid.Column="0"  VerticalAlignment="Center" Grid.Row="2" Text="Total:" FontSize="20" Foreground="#006241" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" Text="{Binding a, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left"  Foreground="Black" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Grid.Row="2"  Margin="5,0,0,0" Text="{Binding b,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left" Foreground="Black" ></TextBlock>
+
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Grid.Column="2" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*"></RowDefinition>
+                                                            <RowDefinition Height="0.2*"></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Margin="5,0,5,0" Background="White" >
+                                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                           Text="MODEL 1" FontSize="20" FontWeight="Bold"
+                                                           Foreground="Black"></TextBlock>
+                                                        </Grid>
+
+                                                        <dxc:ChartControl Grid.Row="2" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=paletteMODEL1}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                            
+                                                         DataSource="{Binding ProgressShift2}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                                      dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+                                                        <Grid Margin="5,0,5,0" Background="White" Grid.Row="1">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock VerticalAlignment="Center" Text="Total Shift:" FontSize="20" Foreground="#fcc653" ></TextBlock>
+                                                            <TextBlock Grid.Column="0"  VerticalAlignment="Center" Grid.Row="2" Text="Total:" FontSize="20" Foreground="#006241" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" Text="{Binding c, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left"  Foreground="Black" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Grid.Row="2"  Margin="5,0,0,0" Text="{Binding d,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left" Foreground="Black" ></TextBlock>
+
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Grid.Column="3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*" ></RowDefinition>
+                                                            <RowDefinition Height="0.2*" ></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Margin="5,0,5,0" Background="White" >
+                                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                           Text="MODEL 2" FontSize="20" FontWeight="Bold"
+                                                           Foreground="Black"></TextBlock>
+                                                        </Grid>
+
+                                                        <dxc:ChartControl Grid.Row="2" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=paletteMODEL2}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressShift3}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                                     dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+                                                        <Grid Margin="5,0,5,0" Background="White" Grid.Row="1">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock VerticalAlignment="Center" Text="Total Shift:" FontSize="20" Foreground="#4668a5" ></TextBlock>
+                                                            <TextBlock Grid.Column="0"  VerticalAlignment="Center" Grid.Row="2" Text="Total:" FontSize="20" Foreground="#006241" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" Text="{Binding e, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left"  Foreground="Black" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Grid.Row="2"  Margin="5,0,0,0" Text="{Binding f,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left" Foreground="Black" ></TextBlock>
+
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Grid.Column="4">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*"></RowDefinition>
+                                                            <RowDefinition Height="0.2*" ></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Margin="5,0,5,0" Background="White">
+                                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                           Text="MODEL 3" FontSize="20" FontWeight="Bold"
+                                                           Foreground="Black"></TextBlock>
+                                                        </Grid>
+
+                                                        <dxc:ChartControl Grid.Row="2" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=paletteMODEL3}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressShift4}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+                                                        <Grid Margin="5,0,5,0" Background="White" Grid.Row="1">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock VerticalAlignment="Center" Text="Total Shift:" FontSize="20" Foreground="#a54671" ></TextBlock>
+                                                            <TextBlock Grid.Column="0"  VerticalAlignment="Center" Grid.Row="2" Text="Total:" FontSize="20" Foreground="#006241" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" Text="{Binding g, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left"  Foreground="Black" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Grid.Row="2"  Margin="5,0,0,0" Text="{Binding h,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left" Foreground="Black" ></TextBlock>
+
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Grid.Column="5">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*"></RowDefinition>
+                                                            <RowDefinition Height="0.2*" ></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Margin="5,0,5,0" Background="White" >
+                                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                           Text="MODEL 4" FontSize="20" FontWeight="Bold"
+                                                           Foreground="Black"></TextBlock>
+                                                        </Grid>
+
+                                                        <dxc:ChartControl Grid.Row="2" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=paletteMODEL4}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressShift5}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+
+                                                        <Grid Margin="5,0,5,0" Background="White" Grid.Row="1">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock VerticalAlignment="Center" Text="Total Shift:" FontSize="20" Foreground="#49a4be" ></TextBlock>
+                                                            <TextBlock Grid.Column="0"  VerticalAlignment="Center" Grid.Row="2" Text="Total:" FontSize="20" Foreground="#006241" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" Text="{Binding i, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left"  Foreground="Black" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Grid.Row="2"  Margin="5,0,0,0" Text="{Binding k,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left" Foreground="Black" ></TextBlock>
+
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Grid.Column="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*"></RowDefinition>
+                                                            <RowDefinition Height="0.2*" ></RowDefinition>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Margin="5,0,5,0" Background="White" >
+                                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                           Text="QUANTITY" FontSize="20" FontWeight="Bold"
+                                                           Foreground="Black"></TextBlock>
+                                                        </Grid>
+
+                                                        <dxc:ChartControl Grid.Row="2" BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=paletteQuantity}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressShiftTotalSL}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+
+                                                        <Grid Margin="5,0,5,0" Background="White" Grid.Row="1">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock VerticalAlignment="Center" Text="Total Shift:" FontSize="20" Foreground="#FFFF7F00" ></TextBlock>
+                                                            <TextBlock Grid.Column="0"  VerticalAlignment="Center" Grid.Row="2" Text="Total:" FontSize="20" Foreground="#006241" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" Text="{Binding l, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left"  Foreground="Black" ></TextBlock>
+                                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Grid.Row="2"  Margin="5,0,0,0" Text="{Binding m,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="20" HorizontalAlignment="Left" Foreground="Black" ></TextBlock>
+
+                                                        </Grid>
+                                                    </Grid>
+                                                </Grid>
+
+                                            </Grid>
+                                        </Grid>
+                                    </TabItem>
+
+                                    <TabItem Header="    COMPARE BY SHIFT   " FontSize="20" Style="{DynamicResource TabItemStyle}" >
+                                        <Grid Background="#FFE5E5E5" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid>
+                                                    <TextBlock Text="QUANTITY PRODUCT BY HOURS" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="Gray" ></TextBlock>
+                                                </Grid>
+                                                <Border Grid.Row="1" Background="White" CornerRadius="10">
+                                                    <Grid >
+                                                        <dxc:ChartControl Grid.Row="1"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="OnDataChanged"
+                                   Palette="{StaticResource ResourceKey=palette}">
+                                                            <dxc:ChartControl.CrosshairOptions>
+                                                                <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="True"/>
+                                                            </dxc:ChartControl.CrosshairOptions>
+                                                            <dxc:XYDiagram2D SeriesItemsSource="{Binding SeriesHours }" DataContext="{StaticResource DBHoya1}">
+                                                                <dxc:XYDiagram2D.AxisX>
+                                                                    <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                        <dxc:AxisX2D.Label>
+                                                                            <dxc:AxisLabel FontSize= "10"/>
+                                                                        </dxc:AxisX2D.Label>
+                                                                        <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                            <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                        </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                    </dxc:AxisX2D>
+                                                                </dxc:XYDiagram2D.AxisX>
+                                                                <dxc:XYDiagram2D.AxisY>
+                                                                    <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                        <dxc:AxisY2D.WholeRange>
+                                                                            <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                        </dxc:AxisY2D.WholeRange>
+                                                                        <dxc:AxisY2D.Label>
+                                                                            <dxc:AxisLabel />
+                                                                        </dxc:AxisY2D.Label>
+                                                                    </dxc:AxisY2D>
+                                                                </dxc:XYDiagram2D.AxisY>
+                                                                <dxc:XYDiagram2D.SeriesItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <dxc:BarSideBySideSeries2D DataSource="{Binding Values}" 
+                                                                        DisplayName ="{Binding Name}"
+                                                                        ArgumentDataMember="Argument"
+                                                                        ValueDataMember="Value" 
+                                                                        ColorEach="False" 
+                                                                        LabelsVisibility="True" 
+                                                                        BarWidth="0.7">
+                                                                            <dxc:BarSideBySideSeries2D.Label>
+                                                                                <dxc:SeriesLabel dxc:BarSideBySideSeries2D.LabelPosition="Center" ResolveOverlappingMode="Default" Indent="15" FontSize="10" />
+                                                                            </dxc:BarSideBySideSeries2D.Label>
+                                                                        </dxc:BarSideBySideSeries2D>
+
+                                                                    </DataTemplate>
+
+
+                                                                </dxc:XYDiagram2D.SeriesItemTemplate>
+                                                            </dxc:XYDiagram2D>
+
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                
+                                        VerticalPosition="BottomOutside"
+                                        Orientation="Horizontal"
+                                        ReverseItems="True"
+                                        Height="25"
+                                        Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                        </dxc:ChartControl>
+
+
+                                                    </Grid>
+
+
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid Grid.Row="1" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Text="QUANTITY" FontWeight="Bold" FontSize="25" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                                    <Grid Grid.Row="1" >
+                                                        <dxc:ChartControl BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=palette}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressSLShift}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}: {V}"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+
+                                                        <Label Content="{Binding Qtytoday}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,38" ></Label>
+
+                                                    </Grid>
+                                                </Grid>
+                                                <Grid Grid.Column="1" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition Height="231*"></RowDefinition>
+
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Text="MODEL" FontWeight="Bold" Foreground="Gray" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                                    <Border Background="White" CornerRadius="10" Grid.Row="1" >
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition></RowDefinition>
+                                                                <RowDefinition Height="60"></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid Grid.Row="0" Margin="0,0,0,0" >
+                                                                <dxc:ChartControl BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=palette}">
+                                                                    <dxc:ChartControl.Legends>
+                                                                        <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                                    </dxc:ChartControl.Legends>
+                                                                    <dxc:SimpleDiagram2D>
+                                                                        <dxc:PieSeries2D 
+                                                         DataSource="{Binding ProgressShiftModel}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}: {V}"
+                                                         HoleRadiusPercent="50">
+
+                                                                            <dxc:PieSeries2D.Model>
+                                                                                <dxc:GlarePie2DModel/>
+                                                                            </dxc:PieSeries2D.Model>
+
+                                                                            <dxc:PieSeries2D.Label>
+                                                                                <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                            </dxc:PieSeries2D.Label>
+                                                                        </dxc:PieSeries2D>
+                                                                    </dxc:SimpleDiagram2D>
+                                                                </dxc:ChartControl>
+                                                                <Label Margin="0,0,0,38" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Content="{Binding SLBasket}" ></Label>
+
+                                                            </Grid>
+                                                            <Button Command="{Binding Detail}" Margin="0,0,0,0" Content="Detail" FontSize="25" Grid.Row="2" ></Button>
+
+                                                        </Grid>
+                                                    </Border>
+
+                                                </Grid>
+                                                <Grid Grid.Column="2" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Text="BASKET" FontWeight="Bold" Foreground="Gray" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center"></TextBlock>
+                                                    <Grid Grid.Row="1" >
+                                                        <dxc:ChartControl BorderBrush="Transparent" Background="Transparent"  Padding="0"
+                                                ToolTipEnabled="True" AnimationMode="OnDataChanged" Palette="{StaticResource ResourceKey=palette}">
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                            <dxc:SimpleDiagram2D>
+                                                                <dxc:PieSeries2D 
+                                                         DataSource="{Binding  ProgressBasketShift}"
+                                                         DataContext="{StaticResource DBHoya1}"
+                                                         ArgumentDataMember="Argument" 
+                                                         ValueDataMember="Value"
+                                                         LabelsVisibility="True" 
+                                                         LegendTextPattern="{}{A}: {V}PCS"
+                                                         HoleRadiusPercent="50">
+
+                                                                    <dxc:PieSeries2D.Model>
+                                                                        <dxc:GlarePie2DModel/>
+                                                                    </dxc:PieSeries2D.Model>
+
+                                                                    <dxc:PieSeries2D.Label>
+                                                                        <dxc:SeriesLabel TextPattern="{}{VP:P}" 
+                                                 dxc:PieSeries.LabelPosition="TwoColumns"/>
+                                                                    </dxc:PieSeries2D.Label>
+                                                                </dxc:PieSeries2D>
+                                                            </dxc:SimpleDiagram2D>
+                                                        </dxc:ChartControl>
+
+                                                        <Label Content="{Binding SLBasket}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,38" ></Label>
+
+                                                    </Grid>
+                                                </Grid>
+
+                                            </Grid>
+                                            <Grid Grid.Row="2" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid>
+                                                        <TextBlock Text="QUANTITY BASKEY BY HOURS" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                   FontSize="25" FontWeight="Bold" Foreground="Gray"></TextBlock>
+                                                    </Grid>
+                                                    <Border Background="White" Grid.Row="1" CornerRadius="10">
+                                                        <dxc:ChartControl Grid.Row="1"   BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="OnDataChanged"
+                                                                Palette="{StaticResource ResourceKey=palette}">
+                                                            <dxc:ChartControl.CrosshairOptions>
+                                                                <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="True"/>
+                                                            </dxc:ChartControl.CrosshairOptions>
+                                                            <dxc:XYDiagram2D SeriesItemsSource="{Binding SeriesHoursBasket }" DataContext="{StaticResource DBHoya1}">
+                                                                <dxc:XYDiagram2D.AxisX>
+                                                                    <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                        <dxc:AxisX2D.Label>
+                                                                            <dxc:AxisLabel FontSize= "10"/>
+                                                                        </dxc:AxisX2D.Label>
+                                                                        <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                            <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                        </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                    </dxc:AxisX2D>
+                                                                </dxc:XYDiagram2D.AxisX>
+                                                                <dxc:XYDiagram2D.AxisY>
+                                                                    <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                        <dxc:AxisY2D.WholeRange>
+                                                                            <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                        </dxc:AxisY2D.WholeRange>
+                                                                        <dxc:AxisY2D.Label>
+                                                                            <dxc:AxisLabel />
+                                                                        </dxc:AxisY2D.Label>
+                                                                    </dxc:AxisY2D>
+                                                                </dxc:XYDiagram2D.AxisY>
+                                                                <dxc:XYDiagram2D.SeriesItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <dxc:SplineSeries2D DataSource="{Binding Values}" 
+                                                                        DisplayName ="{Binding Name}"
+                                                                        ArgumentDataMember="Argument"
+                                                                        ValueDataMember="Value" 
+                                                                        ColorEach="False" 
+                                                                        LabelsVisibility="True" 
+                                                                                LineTension="0.8" 
+                                                                                                            
+                                               MarkerSize="15"
+                                    MarkerVisible="True"
+                                                                       >
+
+                                                                        </dxc:SplineSeries2D>
+
+                                                                    </DataTemplate>
+
+
+                                                                </dxc:XYDiagram2D.SeriesItemTemplate>
+                                                            </dxc:XYDiagram2D>
+
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                
+                                        VerticalPosition="BottomOutside"
+                                        Orientation="Horizontal"
+                                        ReverseItems="True"
+                                        Height="25"
+                                        Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                        </dxc:ChartControl>
+
+
+                                                    </Border>
+
+                                                </Grid>
+                                                <Grid Grid.Column="1" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid>
+                                                        <TextBlock Text="WORKING TIME BY HOUR" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                   FontSize="25" FontWeight="Bold" Foreground="Gray"></TextBlock>
+                                                    </Grid>
+                                                    <Border Grid.Row="1" Background="White" Margin="5,0,0,2" CornerRadius="10" >
+                                                        <dxc:ChartControl  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" AnimationMode="{Binding Animation}"
+                                                                  Palette="{StaticResource ResourceKey=palette}">
+                                                            <dxc:ChartControl.CrosshairOptions>
+                                                                <dxc:CrosshairOptions ShowArgumentLine="False" CrosshairLabelMode="ShowForEachSeries" ShowGroupHeaders="False"/>
+                                                            </dxc:ChartControl.CrosshairOptions>
+                                                            <dxc:XYDiagram2D Rotated="True"  Padding="0,0,0,0">
+                                                                <dxc:XYDiagram2D.AxisX>
+                                                                    <dxc:AxisX2D  GridLinesVisible="False" TickmarksVisible="False" TickmarksMinorVisible="False" >
+                                                                        <dxc:AxisX2D.Label>
+                                                                            <dxc:AxisLabel />
+                                                                        </dxc:AxisX2D.Label>
+                                                                        <dxc:AxisX2D.QualitativeScaleOptions>
+                                                                            <dxc:QualitativeScaleOptions GridSpacing="1" AutoGrid="False"/>
+                                                                        </dxc:AxisX2D.QualitativeScaleOptions>
+                                                                    </dxc:AxisX2D>
+                                                                </dxc:XYDiagram2D.AxisX>
+                                                                <dxc:XYDiagram2D.AxisY>
+                                                                    <dxc:AxisY2D GridLinesVisible="False"  TickmarksVisible="False" TickmarksMinorVisible="False" GridLinesMinorVisible="False">
+                                                                        <dxc:AxisY2D.WholeRange>
+                                                                            <dxc:Range dxc:AxisY2D.AlwaysShowZeroLevel="True"/>
+                                                                        </dxc:AxisY2D.WholeRange>
+                                                                        <dxc:AxisY2D.Label>
+                                                                            <dxc:AxisLabel  />
+                                                                        </dxc:AxisY2D.Label>
+                                                                    </dxc:AxisY2D>
+                                                                </dxc:XYDiagram2D.AxisY>
+                                                                <dxc:BarSideBySideSeries2D 
+                                                           
+                                                            DataSource="{Binding WoringTime}" 
+                                                            DataContext="{StaticResource DBHoya1}"
+                                                            ArgumentDataMember="Argument"
+                                                            ValueDataMember="Value" 
+                                                            ColorEach="True" 
+                                                            LabelsVisibility="True" 
+                                                            LegendTextPattern="{}{A}: {V}h"
+                                                            BarWidth="0.7">
+                                                                    <dxc:BarSideBySideSeries2D.Label>
+                                                                        <dxc:SeriesLabel dxc:BarSideBySideSeries2D.LabelPosition="Center" ResolveOverlappingMode="Default" Indent="15" FontSize="15" />
+                                                                    </dxc:BarSideBySideSeries2D.Label>
+                                                                    <dxc:BarSideBySideSeries2D.Model>
+                                                                        <dxc:BorderlessSimpleBar2DModel />
+                                                                    </dxc:BarSideBySideSeries2D.Model>
+                                                                </dxc:BarSideBySideSeries2D>
+                                                            </dxc:XYDiagram2D>
+                                                            <dxc:ChartControl.Legends>
+                                                                <dxc:Legend HorizontalPosition="Center" 
+                                                                     VerticalPosition="BottomOutside"
+                                                                   Orientation="Horizontal"
+                                                                   ReverseItems="True"
+                                                                    Height="25"
+                                                                     FontSize="20"
+                                                                     Padding="0"/>
+                                                            </dxc:ChartControl.Legends>
+                                                        </dxc:ChartControl>
+
+                                                    </Border>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+
+                                    </TabItem>
+                                    <TabItem  Style="{DynamicResource TabItemStyle}" Header="    SENSOR    " FontSize="20"  >
+                                        <Grid Background="#FFE5E5E5"  >
+
+
+                                        </Grid>
+                                    </TabItem>
+
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding Product}" CommandParameter="{Binding ElementName=TabControl,Path=SelectedIndex}"  ></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TabControl>
+
+
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </DockPanel>
+            </ScrollViewer>
+
+
+
+        </Grid>
+    </Viewbox>
+
+</Window>
