@@ -183,118 +183,121 @@
                     </Grid.Background>
                 </Grid>
             </Grid>
-            <ScrollViewer Grid.Row="1" >
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled" >
                 <DockPanel>
-                    <Expander DockPanel.Dock="Left"  
+                    <materialDesign:Card >
+                        <Expander DockPanel.Dock="Left"  
                     ExpandDirection="Left" >
-                        <Expander.Header>
+                            <Expander.Header>
 
-                            <materialDesign:PackIcon Margin="0,450,0,0" 
+                                <materialDesign:PackIcon Margin="0,450,0,0" 
                             Kind="ChevronDoubleRight"
                             Height="50"
                             Width="Auto" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch"
                             >
 
-                            </materialDesign:PackIcon>
+                                </materialDesign:PackIcon>
 
-                        </Expander.Header>
-                        <Border Background="#FFE5E5E5" CornerRadius="10" Margin="0,0,0,4">
-                            <Grid Width="230">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="56"></RowDefinition>
-                                    <RowDefinition Height="40"/>
-                                    <RowDefinition Height="343"></RowDefinition>
-                                    <RowDefinition Height="0.4*"/>
-                                    <RowDefinition  Height="0.4*" />
-                                    <RowDefinition  Height="0.4*" />
-                                    <RowDefinition  Height="0.6*" />
-                                    <RowDefinition  Height="0.4*" />
-                                </Grid.RowDefinitions>
-                                <Border CornerRadius="5" Height="41" Width="100" Background="#FF348EF6" Grid.Row="0" >
-                                    <TextBlock Text="CONTROL"   HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center" Foreground="White"></TextBlock>
-                                </Border>
-                                <TextBlock Grid.Row="1" VerticalAlignment="Bottom" Text="Select Date" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" ></TextBlock>
-                                <Grid Background="#FFB8B8B8" Grid.Row="2"  >
+                            </Expander.Header>
+                            <Border Background="#FFE5E5E5" CornerRadius="10" Margin="0,0,0,4">
+                                <Grid Width="230">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"></RowDefinition>
-                                        <RowDefinition Height="0.15*"/>
+                                        <RowDefinition Height="56"></RowDefinition>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="343"></RowDefinition>
+                                        <RowDefinition Height="0.4*"/>
+                                        <RowDefinition  Height="0.4*" />
+                                        <RowDefinition  Height="0.4*" />
+                                        <RowDefinition  Height="0.6*" />
+                                        <RowDefinition  Height="0.4*" />
                                     </Grid.RowDefinitions>
-                                    <Calendar 
+                                    <Border CornerRadius="5" Height="41" Width="100" Background="#FF348EF6" Grid.Row="0" >
+                                        <TextBlock Text="CONTROL"   HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                                    </Border>
+                                    <TextBlock Grid.Row="1" VerticalAlignment="Bottom" Text="Select Date" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" ></TextBlock>
+                                    <Grid Background="#FFB8B8B8" Grid.Row="2"  >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="0.15*"/>
+                                        </Grid.RowDefinitions>
+                                        <Calendar 
                                     SelectedDate="{Binding SelectDatetimes}"
                                            HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top"  Style="{DynamicResource CalendarStyle1}"
                                           CalendarButtonStyle="{DynamicResource CalendarButtonStyle1}" 
                                           CalendarDayButtonStyle="{DynamicResource CalendarDayButtonStyle1}" 
                                           CalendarItemStyle="{DynamicResource CalendarItemStyle1}"  Grid.RowSpan="2" Height="292"/>
-                                    <Button   Height="40" Grid.Row="1"  HorizontalAlignment="Right" Width="100" Padding="0" VerticalAlignment="Center" >
-                                        <materialDesign:PackIcon Kind="ZoomInCursor"
+                                        <Button   Height="40" Grid.Row="1"  HorizontalAlignment="Right" Width="100" Padding="0" VerticalAlignment="Center" >
+                                            <materialDesign:PackIcon Kind="ZoomInCursor"
                                                                  Height="38" Width="44">
 
-                                        </materialDesign:PackIcon>
-                                    </Button>
-                                </Grid>
-                                <Grid Grid.Row="3">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <RadioButton Content="Online" Command="{Binding ONLINE}" IsChecked="{Binding CheckOnline}" FontSize="30" Foreground="#FF08B017" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"  ></RadioButton>
-                                    <RadioButton  Command="{Binding OFFLINE}" CommandParameter="{Binding ElementName=TabControl,Path=SelectedIndex}"  IsChecked="{Binding CheckOffline}" Content="Offline" Grid.Row="1" VerticalAlignment="Center"
+                                            </materialDesign:PackIcon>
+                                        </Button>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <RadioButton Content="Online" Command="{Binding ONLINE}" IsChecked="{Binding CheckOnline}" FontSize="30" Foreground="#FF08B017" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"  ></RadioButton>
+                                        <RadioButton  Command="{Binding OFFLINE}" CommandParameter="{Binding ElementName=TabControl,Path=SelectedIndex}"  IsChecked="{Binding CheckOffline}" Content="Offline" Grid.Row="1" VerticalAlignment="Center"
                                              FontSize="30" Foreground="#FFE60000" HorizontalAlignment="Left" FontWeight="Bold" ></RadioButton>
-                                </Grid>
-                                <Grid Grid.Row="4" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="DB Date" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
-                                    <Button   Command="{Binding Applycommand}" IsEnabled="{Binding IsenabledDate}" Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
-                                </Grid>
-                                <Grid Grid.Row="5" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="DB Product" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
-                                    <Button Command="{Binding ApplyProduct}" IsEnabled="{Binding IsenabledProduct}" Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
-                                </Grid>
-                                <Grid Grid.Row="6" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="DB Shift" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
-                                    <Button Command="{Binding ApplyShiftcommand}" IsEnabled="{Binding IsenabledShift}" Content="APPLY" FontSize="25" Grid.Row="2" Foreground="#FF0046FF" FontWeight="Bold" BorderBrush="#FFD30000" ></Button>
-                                    <ComboBox IsEnabled="{Binding IsenabledShift}" VerticalAlignment="Center" Grid.Row="1" FontSize="25" Foreground="Black" FontWeight="Bold" SelectedIndex="{Binding IndexShift}" >
-                                        <ComboBoxItem FontSize="25" >
-                                            Shift 1
-                                        </ComboBoxItem>
-                                        <ComboBoxItem FontSize="25">
-                                            Shift 2
-                                        </ComboBoxItem>
-                                        <ComboBoxItem FontSize="25">
-                                            Shift 3
-                                        </ComboBoxItem>
-                                    </ComboBox>
-                                </Grid>
-                                <Grid Grid.Row="7" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="DB Compare" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
-                                    <Button Command="{Binding CompareCommand}" IsEnabled="{Binding IsenabledCompare}"  Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
-                                </Grid>
-                                <Grid Grid.Row="8" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
+                                    </Grid>
+                                    <Grid Grid.Row="4" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="DB Date" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                        <Button   Command="{Binding Applycommand}" IsEnabled="{Binding IsenabledDate}" Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
+                                    </Grid>
+                                    <Grid Grid.Row="5" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="DB Product" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                        <Button Command="{Binding ApplyProduct}" IsEnabled="{Binding IsenabledProduct}" Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
+                                    </Grid>
+                                    <Grid Grid.Row="6" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="DB Shift" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                        <Button Command="{Binding ApplyShiftcommand}" IsEnabled="{Binding IsenabledShift}" Content="APPLY" FontSize="25" Grid.Row="2" Foreground="#FF0046FF" FontWeight="Bold" BorderBrush="#FFD30000" ></Button>
+                                        <ComboBox IsEnabled="{Binding IsenabledShift}" VerticalAlignment="Center" Grid.Row="1" FontSize="25" Foreground="Black" FontWeight="Bold" SelectedIndex="{Binding IndexShift}" >
+                                            <ComboBoxItem FontSize="25" >
+                                                Shift 1
+                                            </ComboBoxItem>
+                                            <ComboBoxItem FontSize="25">
+                                                Shift 2
+                                            </ComboBoxItem>
+                                            <ComboBoxItem FontSize="25">
+                                                Shift 3
+                                            </ComboBoxItem>
+                                        </ComboBox>
+                                    </Grid>
+                                    <Grid Grid.Row="7" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="DB Compare" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" ></TextBlock>
+                                        <Button Command="{Binding CompareCommand}" IsEnabled="{Binding IsenabledCompare}"  Content="APPLY" FontSize="25" Grid.Row="1" Foreground="#FF0046FF" FontWeight="Bold" ></Button>
+                                    </Grid>
+                                    <Grid Grid.Row="8" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
 
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Border>
-                    </Expander>
+                            </Border>
+                        </Expander>
+                    </materialDesign:Card>
+                   
                     <Grid Margin="0,0,0,0" Grid.Column="1" >
                        
                         <Border Margin="0,0,0,0" Background="White" CornerRadius="10" Grid.Row="2" >
@@ -590,6 +593,7 @@
 
                                                     </Grid>
                                                 </Border>
+                                          
                                             </Grid>
 
 
@@ -1799,7 +1803,7 @@
                                         </Grid>
                                     </TabItem>
 
-                                    <TabItem Header="    COMPARE BY SHIFT   " FontSize="20" Style="{DynamicResource TabItemStyle}" >
+                                    <TabItem Header="    COMPARE BY SHIFT   " FontSize="20" Style="{DynamicResource TabItemStyle}" Margin="0,-2,0,0" >
                                         <Grid Background="#FFE5E5E5" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition></RowDefinition>

@@ -888,15 +888,15 @@ namespace Hoya.ViewModel
                     CheckOnline = true;
                     IsenabledCompare = IsenabledDate = IsenabledProduct = IsenabledShift = false;
                     timerLoad.Tick += TimerLoad_Tick;
-                    timerLoad.Interval = TimeSpan.FromSeconds(5);
+                    timerLoad.Interval = TimeSpan.FromSeconds(6);
 
                     timeWrite.Tick += TimeWrite_Tick;
-                    timeWrite.Interval = TimeSpan.FromSeconds(2);
-                    timeWrite.IsEnabled = false;
+                    timeWrite.Interval = TimeSpan.FromSeconds(5);
+                    timeWrite.IsEnabled = true;
 
                     DongHO.Tick += DongHO_Tick;
                     DongHO.Interval = TimeSpan.FromSeconds(1);
-                    DongHO.IsEnabled = true;
+                    DongHO.IsEnabled = false;
                     Loading_Indicator.Finished();
                 }
                 catch (Exception ex)
